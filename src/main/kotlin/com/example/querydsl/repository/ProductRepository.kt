@@ -12,6 +12,16 @@ class ProductRepository(
     private val queryFactory: JPAQueryFactory
 ) {
 
+    fun findAllByRequest(name: String?, type: Product.Type?): List<Product> =
+        queryFactory
+            .select(product)
+            .from(product)
+            .apply {
+                name?.let { where(product.name.eq(name)) }
+                type?.let { where(product.type.eq(type)) }
+            }
+            .fetch()
+
     fun findByType(type: Product.Type): List<Product> =
         queryFactory
             .select(product)

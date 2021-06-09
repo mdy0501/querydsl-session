@@ -9,23 +9,18 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "products")
-data class Product(
+@Table(name = "orders")
+data class Order(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
-    val name: String,
-    val price: Long,
+    val productId: Long,
     @Enumerated(value = EnumType.STRING)
-    val type: Type = Type.BASIC
+    val status: Status
 ) {
-    enum class Type {
-        BASIC,
-        CUSTOM,
-        EVENT
-    }
-
-    override fun toString(): String {
-        return "Product(id=$id, name='$name', type=$type)"
+    enum class Status {
+        PURCHASED, // 구매 완료 상태
+        PENDING, // 구매 요청 상태
+        CANCELLED
     }
 }

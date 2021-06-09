@@ -1,9 +1,11 @@
 package com.example.querydsl
 
 import com.example.querydsl.entity.Product
+import com.example.querydsl.repository.JpaProductRepository
 import com.example.querydsl.repository.ProductRepository
 import com.example.querydsl.service.ProductService
 import com.example.querydsl.stub.ProductStub
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
@@ -13,8 +15,14 @@ import org.springframework.test.context.TestConstructor
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 class ProductIntegrationTest(
     private val productService: ProductService,
-    private val productRepository: ProductRepository
+    private val productRepository: ProductRepository,
+    private val jpaProductRepository: JpaProductRepository
 ) {
+
+    @AfterEach
+    fun afterEach() {
+        jpaProductRepository.deleteAll()
+    }
 
     @Test
     fun `getProductListByType service method`() {
