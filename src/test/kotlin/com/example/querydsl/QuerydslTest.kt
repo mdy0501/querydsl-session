@@ -144,7 +144,7 @@ class QuerydslTest(
     }
 
     @Test
-    fun inner_join_test_01() {
+    fun inner_join_test() {
         // given
         val product1 = productRepository.save(ProductStub.getBasicProduct(name = "basic-1"))
         val product2 = productRepository.save(ProductStub.getBasicProduct(name = "basic-2"))

@@ -38,7 +38,6 @@ class ProductRepository(
             .fetch()
 
     fun save(product: Product): Product = jpaProductRepository.save(product)
-
 }
 
 interface JpaProductRepository : JpaRepository<Product, Long>

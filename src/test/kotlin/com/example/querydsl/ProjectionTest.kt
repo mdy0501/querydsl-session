@@ -43,8 +43,8 @@ class ProjectionTest(
 
     @AfterEach
     fun afterEach() {
-        jpaProductRepository.deleteAll()
-        jpaOrderRepository.deleteAll()
+//        jpaProductRepository.deleteAll()
+//        jpaOrderRepository.deleteAll()
     }
 
     @Test
@@ -214,7 +214,6 @@ class ProjectionTest(
 
     private fun productTypeEq(type: Product.Type?): BooleanExpression? =
         type?.let { product.type.eq(type) }
-
 
     // 수정, 삭제 벌크 연산
     @Test
