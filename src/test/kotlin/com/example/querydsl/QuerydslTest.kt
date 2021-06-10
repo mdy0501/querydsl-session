@@ -285,9 +285,4 @@ class QuerydslTest(
             println("[res] : $str")
         }
     }
-
-
 }
-
-
-//
