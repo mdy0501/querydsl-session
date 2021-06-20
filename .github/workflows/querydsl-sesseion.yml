@@ -45,4 +45,4 @@ jobs:
       - name: build
         run: |
           ./gradlew --no-daemon build
-          echo build success
+
