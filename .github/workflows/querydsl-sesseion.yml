@@ -40,6 +40,8 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      - name: change gradlew permissions
+        run: chmod +x ./gradlew
       - name: build
         run: |
             ./gradlew \
